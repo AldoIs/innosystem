@@ -38,7 +38,7 @@ AppAsset::register($this);
     if (Yii::$app->user->isGuest) {
         ?>
         <li><a href="<?php  echo Url::to(['/site/signup']); ?>">Registrarse</a></li>
-        <li><a href="<?php  echo Url::to(['/site/login']); ?>">Ingresar</a></li>        
+        <li><a href="<?php  echo Url::to(['/site/login']); ?>" class = "waves-effect waves-light green">Ingresar</a></li>        
         <?php
     } else { ?>
        

@@ -7,8 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Ingresar';
 ?>
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
@@ -19,19 +18,42 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-                <?= $form->field($model, 'username') ?>
+                <?= $form->field($model, 'username', ['template' => '
+   <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          {input}
+         {label}
+         {error}{hint}
+        </div>
+       
+        </div>
+   </div>']) ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+                <?= $form->field($model, 'password', ['template' => '
+   <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">lock</i>
+          {input}
+         {label}
+         {error}{hint}
+        </div>
+       
+        </div>
+   </div>'])->passwordInput() ?>
 
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                <?= $form->field($model, 'rememberMe')->checkbox(array('class'=>'filled-in')) ?>
 
                 <div style="color:#999;margin:1em 0">
-                    If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
+                    Si olvidaste tu contraseña puedes <?= Html::a('recuperar contraseña.', ['site/request-password-reset']) ?>.
                 </div>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
+ <div class = "row"> <div class="col s6 center">
+                                  <button class="btn waves-effect waves-light green" type="submit" name="action">Ingresar
+                   <i class="material-icons right">send</i>
+                 </button>
+                               </div></div>                </div>
 
             <?php ActiveForm::end(); ?>
         </div>
