@@ -1,5 +1,13 @@
-Yii 2 Advanced Project Template
+Yii2 framework (Esport Sistema)
 ===============================
+
+Es necesario tener composer y bower instalado para poder iniciar el proyecto se configura el servidor local se agrega las tablas ala base de datos.
+
+En linea de comandos se accede al directorio del proyecto del server y con el comando 
+
+composer update 
+
+se descargaran todos los archivos extras necesarios incluidos en composer.json
 
 Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
 developing complex Web applications with multiple tiers.
@@ -16,16 +24,20 @@ Documentation is at [docs/guide/README.md](docs/guide/README.md).
 [![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-advanced/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
 [![Build Status](https://travis-ci.org/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-advanced)
 
-DIRECTORY STRUCTURE
+Estructura del directorio
 -------------------
 
 ```
 common
+    assets/              **Los assets en comun entre frontend y backend**
     config/              contains shared configurations
+    js/                 **Los javascripts en comun entre frontend y backend**
     mail/                contains view files for e-mails
     models/              contains model classes used in both backend and frontend
+    SQL/                 **Carpeta donde se encuentra la base de datos conforme se actualiza**
+    widgets/             **Los assets en comun entre frontend y backend**   
 console
-    config/              contains console configurations
+    config/              **Aqui se configura la base de datos** contains console configurations 
     controllers/         contains console controllers (commands)
     migrations/          contains database migrations
     models/              contains console-specific model classes
