@@ -1,3 +1,13 @@
+main {
+    min-height: 90vh;
+}
+.help-block-error {
+    color: red;
+    margin-top: -10px;
+}
+a.dropdown-button.waves-effect.waves-light.white-text {
+    text-transform: capitalize;
+}
 /*html,
 body {
     height: 100%;

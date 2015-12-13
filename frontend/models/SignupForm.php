@@ -21,18 +21,28 @@ class SignupForm extends Model
     {
         return [
             ['username', 'filter', 'filter' => 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
+            ['username', 'required', 'message' => 'Es necesario un nombre de usuario.' ],
+            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este usuario ya esta registrado.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'filter', 'filter' => 'trim'],
-            ['email', 'required'],
-            ['email', 'email'],
+            ['email', 'required', 'message' => 'Es necesario un correo electronico.' ],
+            ['email', 'email', 'message' => 'El correo no parece estar correcto.' ],
             ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este correo ya esta asociado a otra cuenta.'],
 
-            ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+            ['password', 'required', 'message' => 'Es necesaria una contraseña'],
+            ['password', 'string', 'min' => 6 , 'tooShort' => 'La contraseña debe contener al menos 6 caracteres.' ],
+        ];
+    }
+     public function attributeLabels()
+    {
+        return [
+            'username' => 'Nombre de usuario',
+             'email' => 'Correo electronico',
+             'password' => 'Contraseña',
+
+
         ];
     }
 

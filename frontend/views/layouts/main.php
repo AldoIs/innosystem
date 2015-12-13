@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -26,50 +27,57 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
+       <nav class = " blue darken-1"  >
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo">ENS</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="<?php  echo Url::to(['/site/index']); ?>">Inicio</a></li>
+        <li><a href="<?php  echo Url::to(['/site/about']); ?>">Acerca de</a></li>
+        <li><a href="<?php  echo Url::to(['/site/contact']); ?>">Contacto</a></li>
     <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = [
-            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-            'url' => ['/site/logout'],
-            'linkOptions' => ['data-method' => 'post']
-        ];
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
+        ?>
+        <li><a href="<?php  echo Url::to(['/site/signup']); ?>">Registrarse</a></li>
+        <li><a href="<?php  echo Url::to(['/site/login']); ?>">Ingresar</a></li>        
+        <?php
+    } else { ?>
+       
+        <li><a class=" dropdown-button  waves-effect waves-light white-text" href="#" data-activates="profile-dropdown"><?= Yii::$app->user->identity->username ?><i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+        <ul id="profile-dropdown" class="dropdown-content center">
+                            <li><a class = "center  blue-text darken-1-text" href="#"><i class="mdi-action-face-unlock"></i>Perfil</a>
+                            </li>
+                            <li><a href="#" class = "center  blue-text darken-1-text"><i class="mdi-action-settings"></i>Ajustes</a>
+                            </li>
+                            <li><a href="#" class = "center  blue-text darken-1-text"><i class="mdi-communication-live-help"></i>Ayuda</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#" class = "center  blue-text darken-1-text"><i class="mdi-action-lock-outline"></i>Lock</a>
+                            </li>
+                             <li><?php echo Html::a('<i class="mdi-hardware-keyboard-tab"></i> Salir',
+                        ['site/logout'],
+                        ['data-method'=>'post', 'class'=>'center blue-text darken-1-text']);?></li> 
+                        </ul>
 
+
+    <?php       
+    }
+    ?>
+      </ul>
+
+    </div>
+  </nav>
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
         <?= Alert::widget() ?>
-        <?= $content ?>
+       <main> <?= $content ?></main>
     </div>
 </div>
 
-<footer class="footer">
+<footer class="page-footer  blue darken-1">
+     <div class="footer-copyright"> 
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+      <p class="pull-left white-text">&copy; Innovación Lechuga <?= date('Y') ?></p></div>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+       
     </div>
 </footer>
 
@@ -77,3 +85,6 @@ AppAsset::register($this);
 </body>
 </html>
 <?php $this->endPage() ?>
+
+
+
