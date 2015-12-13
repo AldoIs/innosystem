@@ -1,4 +1,4 @@
-Yii 2 Advanced Project Template
+Yii2 framework (Esport Sistema)
 ===============================
 
 Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
@@ -24,6 +24,7 @@ common
     config/              contains shared configurations
     mail/                contains view files for e-mails
     models/              contains model classes used in both backend and frontend
+
 console
     config/              contains console configurations
     controllers/         contains console controllers (commands)
