@@ -28,6 +28,17 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'authClientCollection' => [
+        'class' => 'yii\authclient\Collection',
+        'clients' => [
+            'facebook' => [
+                'class' => 'yii\authclient\clients\Facebook',
+                 'authUrl' => 'https://www.facebook.com/dialog/oauth?display=popup',
+                'clientId' => '935979873150754',
+                'clientSecret' => 'eb196aa45836169e00329530c4c6f1d9',
+                ],
+            ],
+        ],
     ],
     'params' => $params,
 ];

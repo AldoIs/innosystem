@@ -12,6 +12,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use common\models\User;
 
 /**
  * Site controller
@@ -21,6 +22,7 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
+    public $successUrl = 'Success';
     public function behaviors()
     {
         return [
@@ -55,6 +57,10 @@ class SiteController extends Controller
     public function actions()
     {
         return [
+        'auth' => [
+      'class' => 'yii\authclient\AuthAction',
+      'successCallback' => [$this, 'oAuthSuccess'],
+             ],
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
@@ -210,4 +216,45 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    /**
+* This function will be triggered when user is successfuly authenticated using some oAuth client.
+*
+* @param yii\authclient\ClientInterface $client
+* @return boolean|yii\web\Response
+*/
+public function oAuthSuccess($client) {
+  // get user data from client
+  $userAttributes = $client->getUserAttributes();
+   $model = new LoginForm();
+
+  // do some thing with user data. for example with $userAttributes['email']
+    $attributes = $client->getUserAttributes();
+        // user login or signup comes here
+        /*
+        Checking facebook email registered yet?
+        Maxsure your registered email when login same with facebook email
+        die(print_r($attributes));
+        */
+        
+        $user = \common\models\User::find()->where(['email'=>$attributes['email']])->one();
+        if(!empty($user)){
+            Yii::$app->user->login($user);
+        
+        }else{
+
+            $user = new User();
+            $user->username = $attributes['email'];
+            $user->email = $attributes['email'];
+            $user->setPassword('TodosSomosNinjas');
+            $user->generateAuthKey();
+            if ($user->save()) {
+                 Yii::$app->user->login($user);
+            }
+            // Save session attribute user from FB
+            /*$session = Yii::$app->session;
+            $session['attributes']=$attributes;
+            // redirect to form signup, variabel global set to successUrl
+            $this->successUrl = \yii\helpers\Url::to(['signup']);*/
+        }
+}
 }
