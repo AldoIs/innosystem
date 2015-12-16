@@ -37,6 +37,11 @@ return [
                 'clientId' => '935979873150754',
                 'clientSecret' => 'eb196aa45836169e00329530c4c6f1d9',
                 ],
+                /*'google' => [
+                'class' => 'yii\authclient\clients\GoogleOAuth',
+                'clientId' => '537640914677-b1lnfftmqej96lre9bp1g69innrv3sfu.apps.googleusercontent.com',
+                'clientSecret' => '403o-28Ai_QzFNJ0HL8k91B9',
+            ],*/
             ],
         ],
     ],
