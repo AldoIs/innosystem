@@ -7,6 +7,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\ProfileForm;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -257,4 +258,11 @@ public function oAuthSuccess($client) {
             $this->successUrl = \yii\helpers\Url::to(['signup']);*/
         }
 }
+   public function actionEditprofile()
+    {
+        $model = new ProfileForm();
+        return $this->render('editprofile' , [
+            'model' => $model,
+        ]);
+    }
 }
