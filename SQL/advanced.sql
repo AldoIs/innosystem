@@ -1,9 +1,9 @@
--- phpMyAdmin SQL Dump 
+-- phpMyAdmin SQL Dump
 -- version 4.1.14
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2015 a las 12:51:23
+-- Tiempo de generación: 21-12-2015 a las 11:12:57
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -49,17 +49,29 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 CREATE TABLE IF NOT EXISTS `profile` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
-  `nombre` int(11) NOT NULL,
-  `correo` int(11) NOT NULL,
+  `nombre` text NOT NULL,
+  `correo` text NOT NULL,
   `cumpleanos` date NOT NULL,
   `telefono` text NOT NULL,
   `invocador` text NOT NULL,
   `facebook` text NOT NULL,
   `twitter` text NOT NULL,
   `twitch` text NOT NULL,
+  `puntos` int(11) NOT NULL,
+  `logros` int(11) NOT NULL,
+  `puesto` text NOT NULL,
+  `id_equipo` int(11) NOT NULL,
+  `acercade` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `profile`
+--
+
+INSERT INTO `profile` (`id`, `id_user`, `nombre`, `correo`, `cumpleanos`, `telefono`, `invocador`, `facebook`, `twitter`, `twitch`, `puntos`, `logros`, `puesto`, `id_equipo`, `acercade`) VALUES
+(2, 4, 'AldoIs', 'aldois.rov@gmail.com', '1991-11-23', '016461086327', 'Stinson', 'aldoisC14', 'AldoisMen', 'aldois', 0, 0, 'Miembro', 0, 'Soy un nuevo miembro que busca mejorar cada dia y mostrar que el unico obstaculo es uno mismo.');
 
 -- --------------------------------------------------------
 
@@ -82,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `user`
@@ -90,7 +102,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`, `role`) VALUES
 (1, 'admin', 'n-v6jIyknERgEizFoa0P7-ryq7Z0db9T', '$2y$13$gD5qroNiAHDheUCTvVFRmebXObXJdvxeCQrkEI0GjuPvT.jOC8MN.', 'Bw6juAJ5Zf5F00uadxk-nQh_Sz3_D7F7_1449992187', 'aldois.rov@gmail.com', 10, 1448780717, 1449992187, 0),
-(2, 'zapato', 'Sfm6oNvBEjbrsL5puVRbD-vHhbeqkghw', '$2y$13$FPMUyueqkRxGrI7He2mZx.bvkr6FkWcAcHiZr9NsYCrBF6nomTkDa', NULL, 'aldo@a.com', 10, 1449992213, 1449992213, 0);
+(2, 'zapato', 'Sfm6oNvBEjbrsL5puVRbD-vHhbeqkghw', '$2y$13$FPMUyueqkRxGrI7He2mZx.bvkr6FkWcAcHiZr9NsYCrBF6nomTkDa', NULL, 'aldo@a.com', 10, 1449992213, 1449992213, 0),
+(3, 'aldoboy5@hotmail.com', '61EiA9NWRXKEK6MsUtZm72GmU5kB6ZdK', '$2y$13$PDyDdlnYF1dzuhmfC1aZLOBJbIq/nvfNPS7IrvmyxMjc.LMpuZ0WO', NULL, 'aldoboy5@hotmail.com', 10, 1450252308, 1450252308, 0),
+(4, 'aldois', 'PJNgzt8Hr08hw1-inQ0uroARxVHvss0y', '$2y$13$2DWfa/UM5Pn0.PZ9.2dC/uo/rBdH8ersgHwTFkC6MrmyuCgr7cH1.', NULL, 'aldo@a.coma', 10, 1450332100, 1450332100, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
