@@ -1,43 +1,31 @@
 <?php
-
 namespace common\models;
 
 use Yii;
+use yii\base\Model;;
+use common\models\Profile;
 
 /**
- * This is the model class for table "profile".
- *
- * @property integer $id
- * @property integer $id_user
- * @property integer $nombre
- * @property integer $correo
- * @property string $cumpleanos
- * @property string $telefono
- * @property string $invocador
- * @property string $facebook
- * @property string $twitter
- * @property string $twitch
+ * Signup form
  */
-class ProfileForm extends \yii\db\ActiveRecord
+class ProfileForm extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'profile';
-    }
-
-    /**
-     * @inheritdoc
-     */
+    public $id_user;
+    public $nombre;
+    public $correo;
+    public $cumpleanos;
+    public $telefono;
+    public $invocador;
+    public $facebook;
+    public $twitter;
+    public $twitch;
     public function rules()
     {
         return [
-            [[ 'nombre', 'correo', 'cumpleanos', 'telefono', 'invocador', 'facebook', 'twitter', 'twitch'], 'required'],
-            [[ 'correo'], 'integer'],
+            [['nombre', 'correo', 'cumpleanos', 'telefono', 'invocador'], 'required'],
+            [['correo'],'email'],
             [['cumpleanos'], 'safe'],
-            [['nombre','telefono', 'invocador', 'facebook', 'twitter', 'twitch'], 'string']
+            [['telefono', 'invocador', 'facebook', 'twitter', 'twitch', 'nombre'], 'string']
         ];
     }
 
@@ -47,17 +35,71 @@ class ProfileForm extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'nombre' => 'Nombre en pantalla',
+            'id' => 'ID',
+            'id_user' => 'Id User',
+            'nombre' => 'Nombre',
             'correo' => 'Correo',
-            'cumpleanos' => 'Cumpleaños',
+            'cumpleanos' => 'Cumpleanos',
             'telefono' => 'Telefono',
-            'invocador' => 'Nombre de Invocador',
+            'invocador' => 'Nombre de Invocador en (LAN)',
             'facebook' => 'Facebook',
             'twitter' => 'Twitter',
             'twitch' => 'Twitch',
         ];
     }
-    public function save() {
 
+    public function saveProfile() 
+    {
+
+ * @property integer $id
+ * @property integer $id_user
+ * @property strin g$nombre
+ * @property integer $correo
+ * @property string $cumpleanos
+ * @property string $telefono
+ * @property string $invocador
+ * @property string $facebook
+ * @property string $twitter
+ * @property string $twitch
+ * @property int $puntos
+ * @property int $logros
+ * @property string $puesto
+ * @property int $id_equipo
+ * @property String $acercade
+        $perfil = Profile::find()->where(['id_user' => Yii::$app->user->id])->one();
+        if(count($perfil)>0) {
+            $profile = $perfil;
+            $profile->invocador = $this->invocador;
+            $profile->facebook = $this->facebook;
+            $profile->twitter = $this->twitter;
+            $profile->twitch = $this->twitch;
+        }else {
+            $profile = new Profile();
+            $profile->puntos =  0;
+            $profile->logros = 0;
+            $profile->puesto = "Miembro";
+            $profile->id_equipo = 0;
+            $profile->acercade = "Soy un nuevo miembro que busca mejorar cada dia y mostrar que el unico obstaculo es uno mismo.";
+
+        }
+            if ($this->validate() ) {
+            $profile->id_user = Yii::$app->user->id;
+            $profile->correo = $this->correo;
+            $profile->nombre = $this->nombre;
+            $profile->cumpleanos =  date("Y-m-d", strtotime($this->cumpleanos));
+            $profile->telefono =  $this->telefono;
+            $profile->invocador = $this->invocador;
+            $profile->facebook = $this->facebook;
+            $profile->twitter = $this->twitter;
+            $profile->twitch = $this->twitch;
+            
+            if ($profile->save()) {
+                return true;
+            }else {
+                return false;
+            }
+        }
     }
 }
+
+     ?>

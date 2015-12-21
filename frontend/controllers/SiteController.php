@@ -14,6 +14,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\User;
+use common\models\Profile;
 
 /**
  * Site controller
@@ -226,16 +227,12 @@ class SiteController extends Controller
 public function oAuthSuccess($client) {
   // get user data from client
   $userAttributes = $client->getUserAttributes();
-   $model = new LoginForm();
+  
 
   // do some thing with user data. for example with $userAttributes['email']
     $attributes = $client->getUserAttributes();
         // user login or signup comes here
-        /*
-        Checking facebook email registered yet?
-        Maxsure your registered email when login same with facebook email
-        die(print_r($attributes));
-        */
+    
         
         $user = \common\models\User::find()->where(['email'=>$attributes['email']])->one();
         if(!empty($user)){
@@ -251,18 +248,31 @@ public function oAuthSuccess($client) {
             if ($user->save()) {
                  Yii::$app->user->login($user);
             }
-            // Save session attribute user from FB
-            /*$session = Yii::$app->session;
-            $session['attributes']=$attributes;
-            // redirect to form signup, variabel global set to successUrl
-            $this->successUrl = \yii\helpers\Url::to(['signup']);*/
+       
         }
 }
    public function actionEditprofile()
     {
         $model = new ProfileForm();
+         if ($model->load(Yii::$app->request->post()) && $model->saveProfile() ) {
+              $model = new Profile();
+              return $this->render('profile', [
+                'model' => $model,
+                ]);
+         }else {
+          
+         
         return $this->render('editprofile' , [
             'model' => $model,
         ]);
+    }
+    }
+       public function actionProfile()
+    {
+        $model = new Profile();
+        return $this->render('profile' , [
+            'model' => $model,
+        ]);
+    
     }
 }

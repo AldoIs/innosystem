@@ -33,7 +33,7 @@ AppAsset::register($this);
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="<?php  echo Url::to(['/site/index']); ?>">Inicio</a></li>
         <li><a href="<?php  echo Url::to(['/site/about']); ?>">Acerca de</a></li>
-        <li><a href="<?php  echo Url::to(['/site/contact']); ?>">Contacto</a></li>
+    <!--    <li><a href="<?php  echo Url::to(['/site/contact']); ?>">Contacto</a></li> -->
     <?php
     if (Yii::$app->user->isGuest) {
         ?>
@@ -44,9 +44,9 @@ AppAsset::register($this);
        
         <li><a class=" dropdown-button  waves-effect waves-light white-text" href="#" data-activates="profile-dropdown"><?= Yii::$app->user->identity->username ?><i class="mdi-navigation-arrow-drop-down right"></i></a></li>
         <ul id="profile-dropdown" class="dropdown-content center">
-                            <li><a class = "center  blue-text darken-1-text" href="#"><i class="mdi-action-face-unlock"></i>Perfil</a>
+                            <li><a class = "center  blue-text darken-1-text" href="<?php  echo Url::to(['/site/profile']); ?>"><i class="mdi-action-face-unlock"></i>Perfil</a>
                             </li>
-                            <li><a href="#" class = "center  blue-text darken-1-text"><i class="mdi-action-settings"></i>Ajustes</a>
+                            <li><a href="<?php  echo Url::to(['/site/editprofile']); ?>" class = "center  blue-text darken-1-text"><i class="mdi-action-settings"></i>Ajustes</a>
                             </li>
                             <li><a href="#" class = "center  blue-text darken-1-text"><i class="mdi-communication-live-help"></i>Ayuda</a>
                             </li>
@@ -54,8 +54,10 @@ AppAsset::register($this);
                             <li><a href="#" class = "center  blue-text darken-1-text"><i class="mdi-action-lock-outline"></i>Lock</a>
                             </li>
                              <li><?php echo Html::a('<i class="mdi-hardware-keyboard-tab"></i> Salir',
-                        ['site/logout'],
-                        ['data-method'=>'post', 'class'=>'center blue-text darken-1-text']);?></li> 
+                                    ['site/logout'],
+                                    ['data-method'=>'post',
+                                     'class'=>'center blue-text darken-1-text']
+                                );?></li> 
                         </ul>
 
 
