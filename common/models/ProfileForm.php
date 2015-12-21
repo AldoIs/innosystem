@@ -51,21 +51,7 @@ class ProfileForm extends Model
     public function saveProfile() 
     {
 
- * @property integer $id
- * @property integer $id_user
- * @property strin g$nombre
- * @property integer $correo
- * @property string $cumpleanos
- * @property string $telefono
- * @property string $invocador
- * @property string $facebook
- * @property string $twitter
- * @property string $twitch
- * @property int $puntos
- * @property int $logros
- * @property string $puesto
- * @property int $id_equipo
- * @property String $acercade
+
         $perfil = Profile::find()->where(['id_user' => Yii::$app->user->id])->one();
         if(count($perfil)>0) {
             $profile = $perfil;
@@ -92,7 +78,7 @@ class ProfileForm extends Model
             $profile->facebook = $this->facebook;
             $profile->twitter = $this->twitter;
             $profile->twitch = $this->twitch;
-            
+
             if ($profile->save()) {
                 return true;
             }else {
