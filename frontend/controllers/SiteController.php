@@ -272,7 +272,7 @@ public function oAuthSuccess($client) {
         $model = null;
         $model = Profile::find()->where(['id_user' => Yii::$app->user->id])->one();
         if($model == null) {
-           $model = new Profile();
+           $model = new Profile();  
         }
         return $this->render('profile' , [
             'model' => $model,
