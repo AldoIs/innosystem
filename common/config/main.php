@@ -9,7 +9,7 @@ return [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=wsiemarketingmexico.com;dbname=aldoDB',
             'username' => 'aldois',
-            'password' => '123456',
+            'password' => '123456   ',
             'charset' => 'utf8',
         ],
         'mailer' => [
