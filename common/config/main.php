@@ -8,7 +8,7 @@ return [
         'db' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=wsiemarketingmexico.com;dbname=aldoDB',
-            'username' => 'aldois',
+            'username' => 'aldois@wsiemarketingmexico.com',
             'password' => '123456   ',
             'charset' => 'utf8',
         ],
