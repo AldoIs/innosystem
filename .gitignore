@@ -4,7 +4,7 @@
 # phpstorm project files
 .idea
 
-# netbeans project files
+# netbeans project Files
 nbproject
 
 # zend studio for eclipse project files
@@ -17,7 +17,7 @@ Thumbs.db
 
 # composer vendor dir
 /vendor
-
+!/vendor/bower
 # composer itself is not needed
 composer.phar
 
