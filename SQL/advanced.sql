@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-12-2015 a las 11:12:57
+-- Tiempo de generación: 30-12-2015 a las 06:06:44
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -71,7 +71,45 @@ CREATE TABLE IF NOT EXISTS `profile` (
 --
 
 INSERT INTO `profile` (`id`, `id_user`, `nombre`, `correo`, `cumpleanos`, `telefono`, `invocador`, `facebook`, `twitter`, `twitch`, `puntos`, `logros`, `puesto`, `id_equipo`, `acercade`) VALUES
-(2, 4, 'AldoIs', 'aldois.rov@gmail.com', '1991-11-23', '016461086327', 'Stinson', 'aldoisC14', 'AldoisMen', 'aldois', 0, 0, 'Miembro', 0, 'Soy un nuevo miembro que busca mejorar cada dia y mostrar que el unico obstaculo es uno mismo.');
+(2, 4, 'AldoIs', 'aldois.rov@gmail.com', '2015-01-23', '6461086320', 'Stinson', 'aldois', 'AldoisMen', 'aldois', 0, 0, 'Miembro', 0, 'Soy un nuevo miembro que busca mejorar cada dia y mostrar que el unico obstaculo es uno mismo.');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `summoner`
+--
+
+CREATE TABLE IF NOT EXISTS `summoner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `region` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `summoner_id` int(11) NOT NULL,
+  `summoner_name` text NOT NULL,
+  `summoner_level` int(11) NOT NULL,
+  `profile_icon` int(11) NOT NULL,
+  `has_been_updated` int(11) NOT NULL,
+  `update_automatically` int(11) NOT NULL,
+  `time_created` int(11) NOT NULL,
+  `time_updated` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `summoner_account_id_index` (`region`,`id_user`),
+  KEY `summoner_summoner_name_index` (`region`,`summoner_name`(64)),
+  KEY `summoner_update_automatically_index` (`update_automatically`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Volcado de datos para la tabla `summoner`
+--
+
+INSERT INTO `summoner` (`id`, `region`, `id_user`, `summoner_id`, `summoner_name`, `summoner_level`, `profile_icon`, `has_been_updated`, `update_automatically`, `time_created`, `time_updated`) VALUES
+(5, 1, 4, 293964, '', 30, 21, 0, 0, 778880248, 778880248),
+(6, 1, 4, 293964, '', 30, 21, 0, 0, 778880248, 778880248),
+(7, 1, 4, 293964, '', 30, 21, 0, 0, 778880248, 778880248),
+(8, 1, 4, 293964, '', 30, 21, 0, 0, 778880248, 778880248),
+(9, 1, 4, 293964, '', 30, 21, 0, 0, 778880248, 778880248),
+(10, 1, 4, 293964, '', 30, 21, 0, 0, 778880248, 778880248),
+(11, 1, 4, 293964, '', 30, 21, 0, 0, 778880248, 778880248),
+(12, 1, 4, 293964, '', 30, 21, 0, 0, 778880248, 778880248);
 
 -- --------------------------------------------------------
 
