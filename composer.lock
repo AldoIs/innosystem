@@ -154,16 +154,16 @@
         },
         {
             "name": "bower-asset/materialize",
-            "version": "v0.97.3",
+            "version": "v0.97.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dogfalo/materialize.git",
-                "reference": "2ae067cca8ef38a0823dcdc3c97aa505e04b2443"
+                "reference": "14f272a58e3524623e330c736d3a9b88ab500cc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dogfalo/materialize/zipball/2ae067cca8ef38a0823dcdc3c97aa505e04b2443",
-                "reference": "2ae067cca8ef38a0823dcdc3c97aa505e04b2443",
+                "url": "https://api.github.com/repos/Dogfalo/materialize/zipball/14f272a58e3524623e330c736d3a9b88ab500cc2",
+                "reference": "14f272a58e3524623e330c736d3a9b88ab500cc2",
                 "shasum": ""
             },
             "require": {
