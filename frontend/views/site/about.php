@@ -7,7 +7,7 @@ use LeagueWrap\Api;
 $this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
 
-$myKey = "6b358a5a-85ca-49d1-92d4-b148e1344e2c";
+/* $myKey = "6b358a5a-85ca-49d1-92d4-b148e1344e2c";
 
 	/* TABLA MYSQL
 	id
@@ -22,7 +22,7 @@ $myKey = "6b358a5a-85ca-49d1-92d4-b148e1344e2c";
 	time_created
 	time_updated */
 
-	$api      = new Api($myKey);            
+	/*$api      = new Api($myKey);            
 	$api->setRegion('lan');
 	$summoner = $api->summoner();           
 	$bakasan  = $summoner->info('stinson'); 
@@ -35,7 +35,7 @@ $myKey = "6b358a5a-85ca-49d1-92d4-b148e1344e2c";
 $matchlistapi = $api->matchlist() ;
 echo $matchlist = $matchlist->matchlist($bakasan->id). "<br>";
 echo $numberOfplayedGames = $matchlist->totalGames. "<br>";
-echo $roleInGame = $matchlist->match(0)->role. "<br>";            
+echo $roleInGame = $matchlist->match(0)->role. "<br>"; */           
 
 ?>
 <div class="site-about">
